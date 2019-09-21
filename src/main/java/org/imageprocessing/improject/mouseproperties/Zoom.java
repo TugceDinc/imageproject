@@ -8,7 +8,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.geom.AffineTransform;
 
-import org.imageprocessing.improject.ImagePanel;
+import org.imageprocessing.improject.components.panels.ImagePanel;
+
 
 public class Zoom extends MouseAdapter{
 
@@ -41,7 +42,8 @@ public class Zoom extends MouseAdapter{
 		
 	}
 
-	public void paint(Graphics2D g2d) {
+	public void paint(Graphics g) {
+		Graphics2D g2d = (Graphics2D)g;
 		if (zoomer) {
             AffineTransform at = new AffineTransform();
 
@@ -58,8 +60,7 @@ public class Zoom extends MouseAdapter{
             prevZoomFactor = zoomFactor;
             g2d.transform(at);
             zoomer = false;
-    		g2d.drawImage(imgpanel.image, 0, 0, imgpanel);
-    		
+            g2d.drawImage(imgpanel.getImage(), 0, 0, imgpanel);
         }
 
 	}

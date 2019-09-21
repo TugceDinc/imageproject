@@ -1,4 +1,4 @@
-package org.imageprocessing.improject;
+package org.imageprocessing.improject.components.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -88,6 +88,17 @@ public class ToolPanel extends JPanel {
 		btnDistance.setPreferredSize(new Dimension(32, 32));
 		btnDistance.setBorder(null);
 		this.add(btnDistance);
+		
 	}
 
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paintComponent(g);
+		g.fillRoundRect(this.getX(), this.getY(), getWidth(), getHeight(), 15, 15);
+		g.drawRoundRect(this.getX(), this.getY(), getWidth(), getHeight(), 15, 15);
+	}
+	
+	
 }

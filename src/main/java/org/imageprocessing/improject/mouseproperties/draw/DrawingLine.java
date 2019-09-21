@@ -7,7 +7,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-import org.imageprocessing.improject.ImagePanel;
+import org.imageprocessing.improject.components.panels.ImagePanel;
+
+
 
 
 public class DrawingLine implements MouseListeners {

@@ -1,4 +1,4 @@
-package org.imageprocessing.improject;
+package org.imageprocessing.improject.components.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,6 +10,7 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.ObjectInputStream.GetField;
 
 import javax.swing.AbstractAction;
 import javax.swing.JLabel;
@@ -28,16 +29,20 @@ public class CenterPanel extends JPanel {
 
 
 
+	protected ImagePanel getImagePanel() {
+		return pnlImage;
+	}
+
 	/**
 	 * Create the panel.
 	 */
 	public CenterPanel() {
-		this.setBackground(new Color(255, 255, 255));
+		this.setBackground(ProgramColor.getColor().clrBackground);
 		this.currentBounds = this.getSize();
 		JScrollPane scrollPane = new JScrollPane(this);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setBounds(50, 30, 300, 50);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setBounds(50, 30, 300, 50);
 
 
 
@@ -68,8 +73,8 @@ public class CenterPanel extends JPanel {
 	@Override
 	public void printComponents(Graphics g) {
 		super.printComponents(g);
-//		pnlImage.setBounds(this.getWidth() / 2 - pnlImage.getWidth() / 2,
-//				this.getHeight() / 2 - pnlImage.getHeight() / 2, pnlImage.getWidth(), pnlImage.getHeight());
+		pnlImage.setBounds(this.getWidth() / 2 - pnlImage.getWidth() / 2,
+				this.getHeight() / 2 - pnlImage.getHeight() / 2, pnlImage.getWidth(), pnlImage.getHeight());
 		pnlCoordinates.setBounds(0, this.getHeight()-20, this.getWidth(), 20);
 
 	}
@@ -77,12 +82,12 @@ public class CenterPanel extends JPanel {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		if(!currentBounds.equals(this.getSize())) {
-			pnlImage.setBounds(0, 0,this.getWidth(), this.getHeight() - 20);
-			pnlCoordinates.setBounds(0, this.getHeight()-20, this.getWidth(), 20);
-			currentBounds = this.getSize();
+		this.setBackground(ProgramColor.getColor().clrBackground);
+		pnlImage.setBounds(0, 0,this.getWidth(), this.getHeight() - 20);
+		pnlCoordinates.setBounds(0, this.getHeight()-20, this.getWidth(), 20);
+		currentBounds = this.getSize();
 
-		}
+
 	}
 
 	public void setCoordinateValues(Point point) {
