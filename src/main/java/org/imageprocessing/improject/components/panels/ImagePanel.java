@@ -1,5 +1,6 @@
 package org.imageprocessing.improject.components.panels;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
@@ -18,6 +19,7 @@ import javax.swing.JScrollPane;
 
 import org.imageprocessing.improject.mouseproperties.ZoomAndDragListener;
 import org.imageprocessing.improject.mouseproperties.draw.DrawingLine;
+import org.imageprocessing.improject.mouseproperties.draw.Line;
 import org.imageprocessing.improject.mouseproperties.draw.MouseListeners;
 import org.imageprocessing.improject.programproperties.ImageManager;
 
@@ -55,7 +57,13 @@ public class ImagePanel extends JPanel {
 				((MouseListeners)listerns).paint(g2);
 				break;
 			}
-		}		
+		}	
+		
+		for(Line line : imgmngr.lineList) {
+			g2.setColor(Color.BLUE);
+			g2.drawLine(line.p1x, line.p1y, line.p2x, line.p2y);
+		}
+
 	}
 
 	public BufferedImage getImage() {

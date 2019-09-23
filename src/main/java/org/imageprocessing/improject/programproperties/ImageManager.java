@@ -2,8 +2,14 @@ package org.imageprocessing.improject.programproperties;
 
 import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import org.imageprocessing.improject.components.panels.ImagePanel;
+import org.imageprocessing.improject.mouseproperties.draw.Line;
 
 public class ImageManager {
 
@@ -21,9 +27,17 @@ public class ImageManager {
 	
 	private ImagePanel imgpanel;
 	
+	public List<Line> lineList;
+	
+	
+	
+	
+	
+	
 	public ImageManager() {
 		imgpanel = new ImagePanel();
 		imgpanel.setImageManager(this);
+		lineList = new ArrayList<Line>();
 	}
 
 	public void setImgpanel(ImagePanel imgpanel) {

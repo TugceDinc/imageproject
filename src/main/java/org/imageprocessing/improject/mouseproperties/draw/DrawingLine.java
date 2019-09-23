@@ -48,7 +48,12 @@ public class DrawingLine implements MouseListeners {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		if(pointStart != null && pointEnd != null) {
+			imgmngr.lineList.add(new Line((int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor), (int)((pointEnd.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointEnd.y - imgmngr.yOffset) / imgmngr.zoomFactor)));
+			
+		}
 		pointStart = null;
+		pointEnd = null;
 	}
 
 	@Override
@@ -56,13 +61,14 @@ public class DrawingLine implements MouseListeners {
 		if (pointStart != null) {
 			g.setColor(Color.RED);
 			g.drawLine((int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor), (int)((pointEnd.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointEnd.y - imgmngr.yOffset) / imgmngr.zoomFactor));
-
+			
 		}
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		pointEnd = e.getPoint();
+		
 		pnl.repaint();
 	}
 
