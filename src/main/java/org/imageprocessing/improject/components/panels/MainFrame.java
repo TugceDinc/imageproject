@@ -54,9 +54,6 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame() {
 		colors = ProgramColorFactory.factory(ProgramColorTypes.Dark);
-		imgManager = new ImageManager();
-
-
 		init();	
 	}
 
@@ -74,10 +71,12 @@ public class MainFrame extends JFrame {
 		initPanels();
 
 		addPanelsToSplitPanes(pnlCenterLeft, pnlCenterCenter, pnlCenterRight);
+		
 
-		imgManager.setImgpanel(((CenterPanel)pnlCenterCenter).getImagePanel());
 
-
+		
+		
+		
 		JMenuBar menuBar = new ProgramMenuBar(imgManager);
 
 		this.setJMenuBar(menuBar);
@@ -93,6 +92,10 @@ public class MainFrame extends JFrame {
 
 
 	private void initPanels() {
+		
+		
+		imgManager = new ImageManager();		
+		
 		pnlTop = new JPanel();
 		contentPane.add(pnlTop, BorderLayout.NORTH);
 		//pnlTop.setLayout(null);
@@ -121,12 +124,12 @@ public class MainFrame extends JFrame {
 		pnlCenterLeft.setPreferredSize(new Dimension(400, 0));
 		pnlCenterLeft.setMinimumSize(new Dimension(400, 0));
 		pnlCenterLeft.setBackground(colors.clrFrond);
-		JPanel pnlTools = new ToolPanel();
+		JPanel pnlTools = new ToolPanel(imgManager);
 		pnlCenterLeft.add(pnlTools, BorderLayout.NORTH);
 
 
 
-		pnlCenterCenter = new CenterPanel();
+		pnlCenterCenter = new CenterPanel(imgManager);
 
 	}
 
