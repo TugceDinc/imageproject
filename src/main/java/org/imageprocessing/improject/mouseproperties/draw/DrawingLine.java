@@ -49,8 +49,7 @@ public class DrawingLine implements MouseListeners {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if(pointStart != null && pointEnd != null) {
-			imgmngr.lineList.add(new Line((int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor), (int)((pointEnd.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointEnd.y - imgmngr.yOffset) / imgmngr.zoomFactor)));
-			
+			imgmngr.lineList.add(new Line((int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor), (int)((pointEnd.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointEnd.y - imgmngr.yOffset) / imgmngr.zoomFactor), imgmngr.getShapeColor()));
 		}
 		pointStart = null;
 		pointEnd = null;

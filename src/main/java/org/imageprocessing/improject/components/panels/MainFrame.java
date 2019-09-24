@@ -124,10 +124,14 @@ public class MainFrame extends JFrame {
 		pnlCenterLeft.setPreferredSize(new Dimension(400, 0));
 		pnlCenterLeft.setMinimumSize(new Dimension(400, 0));
 		pnlCenterLeft.setBackground(colors.clrFrond);
+		
+		
+		
+		
 		JPanel pnlTools = new ToolPanel(imgManager);
 		pnlCenterLeft.add(pnlTools, BorderLayout.NORTH);
 
-
+		
 
 		pnlCenterCenter = new CenterPanel(imgManager);
 

@@ -60,8 +60,8 @@ public class ImagePanel extends JPanel {
 		}	
 		
 		for(Line line : imgmngr.lineList) {
-			g2.setColor(Color.BLUE);
-			g2.drawLine(line.p1x, line.p1y, line.p2x, line.p2y);
+			g2.setColor(line.getColor());
+			g2.drawLine(line.getP1x(), line.getP1y(), line.getP2x(), line.getP2y());
 		}
 
 	}

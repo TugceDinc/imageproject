@@ -9,8 +9,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JPanel;
 
 import org.imageprocessing.improject.mouseproperties.ZoomAndDragListener;
@@ -73,15 +75,30 @@ public class ToolPanel extends JPanel {
 			}
 		});
 		this.add(btnPan);
+		
+		ImageIcon iconColor = new ImageIcon(ToolPanel.class.getResource("/icon/32x32/Color.png"));
+		JButton btnColor = createBttn(iconColor);
+		btnColor.setBackground(imgmngr.getShapeColor());
+		btnColor.addActionListener(new ActionListener() {
+			JColorChooser chooser = new JColorChooser();
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Color clr = chooser.showDialog(btnColor.getParent(), "Shape Color", imgmngr.getShapeColor());
+				imgmngr.setShapeColor(clr);
+				btnColor.setBackground(clr);
+				
+			}
+		});
+		this.add(btnColor);
 				
 	}
 
 	private JButton createBttn(ImageIcon icon) {
 		JButton btn = new JButton();
-		btn.setIcon(icon);//new ImageIcon(ToolPanel.class.getResource("/icon/32x32/spacing.png")));
+		btn.setIcon(icon);
 		btn.setBackground(color.clrFrond);
 		btn.setPreferredSize(new Dimension(32, 32));
-		btn.setBorder(null);
+		btn.setBorder(BorderFactory.createEtchedBorder());
 		return btn;
 	}
 	
@@ -91,10 +108,7 @@ public class ToolPanel extends JPanel {
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
-		//g.setColor(new Color(200, 200, 200));
-//		g.fillRoundRect(this.getX(), this.getY(), getWidth(), getHeight(), 15, 15);
-//		
-//		g.drawRoundRect(this.getX(), this.getY(), getWidth(), getHeight(), 15, 15);
+		g.setColor(new Color(200, 200, 200));
 	}
 	
 	

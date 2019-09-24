@@ -1,5 +1,6 @@
 package org.imageprocessing.improject.programproperties;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -23,23 +24,26 @@ public class ImageManager {
 	public double yOffset = 0;
 	public int xDiff;
 	public int yDiff;
-	public Point startPoint;
-	
+	public Point startPoint;	
 	private ImagePanel imgpanel;
+	private Color shapeColor = Color.WHITE;
 	
 	public List<Line> lineList;
-	
-	
-	
-	
-	
-	
+
 	public ImageManager() {
 		imgpanel = new ImagePanel();
 		imgpanel.setImageManager(this);
 		lineList = new ArrayList<Line>();
 	}
 
+	public Color getShapeColor() {
+		return shapeColor;
+	}
+	
+	public void setShapeColor(Color shapeColor) {
+		this.shapeColor = shapeColor;
+	}	
+	
 	public void setImgpanel(ImagePanel imgpanel) {
 		this.imgpanel = imgpanel;
 	}
