@@ -77,7 +77,7 @@ public class ProgramMenuBar extends JMenuBar {
 			    pnl.paintImmediately(0, 0, width, height);
 			    g.dispose();
 			    
-			    File outputfile = new File("C:\\Users\\Tugce\\Desktop\\outputimg.jpg");
+			    File outputfile = new File("C:\\Users\\Tugce\\Desktop\\outputimg.png");
 			    try {
 					ImageIO.write(bi, "jpg", outputfile);
 				} catch (IOException e1) {

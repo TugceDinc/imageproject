@@ -83,7 +83,7 @@ public class ToolPanel extends JPanel {
 			JColorChooser chooser = new JColorChooser();
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Color clr = chooser.showDialog(btnColor.getParent(), "Shape Color", imgmngr.getShapeColor());
+				Color clr = chooser.showDialog(btnColor.getParent(),"Shape Color", imgmngr.getShapeColor());
 				imgmngr.setShapeColor(clr);
 				btnColor.setBackground(clr);
 				
