@@ -4,7 +4,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
 import java.io.File;
 import java.io.IOException;
 
@@ -16,6 +19,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import org.imageprocessing.improject.mouseproperties.draw.Line;
+import org.imageprocessing.improject.mouseproperties.draw.MouseListeners;
+import org.imageprocessing.improject.mouseproperties.draw.Square;
 import org.imageprocessing.improject.programproperties.ImageManager;
 
 public class ProgramMenuBar extends JMenuBar {
@@ -71,11 +77,26 @@ public class ProgramMenuBar extends JMenuBar {
 				
 				JPanel pnl = imageManager.getImgpanel();
 				
-			    BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-			    Graphics2D g = bi.createGraphics();
-			    pnl.paint(g);
-			    pnl.paintImmediately(0, 0, width, height);
-			    g.dispose();
+			    BufferedImage bi = imageManager.getImage();//new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+			    Graphics2D g2 = bi.createGraphics();
+				
+				for(Line line : imageManager.lineList) {
+					g2.setColor(line.getColor());
+					g2.drawLine(line.getP1x(), line.getP1y(), line.getP2x(), line.getP2y());
+				}
+				for(Square sqr : imageManager.squareList) {
+					g2.setColor(sqr.c);
+					g2.drawPolygon(sqr);
+					
+				}
+//			    byte[] pixels = ((DataBufferByte) imageManager.getImage().getRaster().getDataBuffer()).getData();
+//			    
+//			    
+//			    
+//			    Graphics2D g = bi.createGraphics();
+//			    pnl.paint(g);
+//			    pnl.paintImmediately(0, 0, width, height);
+//			    g.dispose();
 			    
 			    File outputfile = new File("C:\\Users\\Tugce\\Desktop\\outputimg.png");
 			    try {

@@ -2,6 +2,7 @@ package org.imageprocessing.improject.programproperties;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,6 +12,7 @@ import java.util.ListIterator;
 
 import org.imageprocessing.improject.components.panels.ImagePanel;
 import org.imageprocessing.improject.mouseproperties.draw.Line;
+import org.imageprocessing.improject.mouseproperties.draw.Square;
 
 public class ImageManager {
 
@@ -29,11 +31,12 @@ public class ImageManager {
 	private Color shapeColor = Color.WHITE;
 	
 	public List<Line> lineList;
-
+	public List<Square> squareList;
 	public ImageManager() {
 		imgpanel = new ImagePanel();
 		imgpanel.setImageManager(this);
 		lineList = new ArrayList<Line>();
+		squareList = new ArrayList<Square>();
 	}
 
 	public Color getShapeColor() {

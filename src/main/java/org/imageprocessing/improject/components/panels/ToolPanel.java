@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import org.imageprocessing.improject.mouseproperties.ZoomAndDragListener;
 import org.imageprocessing.improject.mouseproperties.draw.DrawingLine;
+import org.imageprocessing.improject.mouseproperties.draw.DrawingSquare;
 import org.imageprocessing.improject.mouseproperties.draw.MouseListeners;
 import org.imageprocessing.improject.programproperties.ImageManager;
 import org.imageprocessing.improject.programproperties.ProgramColor;
@@ -46,6 +47,19 @@ public class ToolPanel extends JPanel {
 		color = ProgramColor.getColor();		
 		setBorder(null);
 		setBackground(color.clrFrond);
+		
+		ImageIcon iconsquare = new ImageIcon(ToolPanel.class.getResource("/icon/32x32/Color.png"));
+		JButton btnsquare = createBttn(iconsquare);
+		btnsquare.addActionListener(new ActionListener() {
+			DrawingSquare listener = new DrawingSquare(imgmngr);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				imgmngr.getImgpanel().removeMouseListeners(mouseListeners);
+				mouseListeners = listener;
+				imgmngr.getImgpanel().addMouseListeners(mouseListeners);
+			}
+		});
+		this.add(btnsquare);
 		
 		ImageIcon iconLine = new ImageIcon(ToolPanel.class.getResource("/icon/32x32/Line.png"));
 		JButton btnLine = this.createBttn(iconLine);
@@ -90,7 +104,10 @@ public class ToolPanel extends JPanel {
 			}
 		});
 		this.add(btnColor);
-				
+
+
+		
+		
 	}
 
 	private JButton createBttn(ImageIcon icon) {

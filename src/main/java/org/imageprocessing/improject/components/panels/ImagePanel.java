@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
+import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -21,6 +22,7 @@ import org.imageprocessing.improject.mouseproperties.ZoomAndDragListener;
 import org.imageprocessing.improject.mouseproperties.draw.DrawingLine;
 import org.imageprocessing.improject.mouseproperties.draw.Line;
 import org.imageprocessing.improject.mouseproperties.draw.MouseListeners;
+import org.imageprocessing.improject.mouseproperties.draw.Square;
 import org.imageprocessing.improject.programproperties.ImageManager;
 
 public class ImagePanel extends JPanel {
@@ -63,6 +65,10 @@ public class ImagePanel extends JPanel {
 			g2.setColor(line.getColor());
 			g2.drawLine(line.getP1x(), line.getP1y(), line.getP2x(), line.getP2y());
 		}
+		for(Square rect : imgmngr.squareList) {
+			g2.setColor(rect.c);
+			g2.drawPolygon(rect);
+		}
 
 	}
 
@@ -91,7 +97,7 @@ public class ImagePanel extends JPanel {
 		//this.setBorder(BorderFactory.createLineBorder(new Color(83, 41, 42), 5));
 		
 		try {
-			image = ImageIO.read(new File("C:\\Users\\Tugce\\Desktop\\image2.jpg"));
+			image = ImageIO.read(new File("C:\\Users\\Tugce\\Downloads\\helloooooooo.png"));
 			
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
@@ -107,7 +113,7 @@ public class ImagePanel extends JPanel {
 	protected void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
-
+		this.setBackground(new Color(50,50,50));
 //		g.drawImage(image, this.getWidth() / 2 - image.getWidth() / 2,
 //				this.getHeight() / 2 - image.getHeight() / 2, this); 
 		
