@@ -2,6 +2,8 @@ package org.imageprocessing.improject;
 
 import java.awt.EventQueue;
 
+import org.imageprocessing.improject.components.panels.MainFrame;
+
 public class App 
 {
 	/**
