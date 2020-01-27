@@ -66,7 +66,7 @@ public class ImagePanel extends JPanel {
 			g2.drawLine(line.getP1x(), line.getP1y(), line.getP2x(), line.getP2y());
 		}
 		for(Square rect : imgmngr.squareList) {
-			g2.setColor(rect.c);
+			g2.setColor(rect.getColor());
 			g2.drawPolygon(rect);
 		}
 
@@ -109,6 +109,7 @@ public class ImagePanel extends JPanel {
 	}
 
 
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 

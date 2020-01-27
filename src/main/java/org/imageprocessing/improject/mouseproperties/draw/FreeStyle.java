@@ -1,43 +1,33 @@
 package org.imageprocessing.improject.mouseproperties.draw;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Shape;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
 import org.imageprocessing.improject.components.panels.ImagePanel;
 import org.imageprocessing.improject.programproperties.ImageManager;
 
-
-
-
-public class DrawingLine implements MouseListeners {
-	
+public class FreeStyle implements MouseListeners {
 
 	Point pointStart = null;
 	Point pointEnd   = null;
-	JPanel layer;
 	ImagePanel pnl;
 	ImageManager imgmngr;
+	Square p;
 	
-	public DrawingLine(ImageManager imgmnger) {
+	public FreeStyle(ImageManager imgmnger) {
 		this.imgmngr = imgmnger;
 		this.pnl = imgmnger.getImgpanel();
 	}
-
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
 		pointStart = e.getPoint();
-		
 		if(!((pointStart.getX()) / imgmngr.zoomFactor > imgmngr.xOffset/ imgmngr.zoomFactor
 				&& (pointStart.getY())/imgmngr.zoomFactor > imgmngr.yOffset/ imgmngr.zoomFactor
 				&& (pointStart.getX())/imgmngr.zoomFactor < ((imgmngr.xOffset + imgmngr.getImage().getWidth()*imgmngr.zoomFactor)/imgmngr.zoomFactor) 
@@ -47,11 +37,11 @@ public class DrawingLine implements MouseListeners {
 		}
 		
 	}
-
+	
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if(pointStart != null && pointEnd != null) {
-			imgmngr.lineList.add(new Line((int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor), (int)((pointEnd.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointEnd.y - imgmngr.yOffset) / imgmngr.zoomFactor), imgmngr.getShapeColor()));
+			imgmngr.squareList.add(p);
 		}
 		pointStart = null;
 		pointEnd = null;
@@ -61,49 +51,49 @@ public class DrawingLine implements MouseListeners {
 	public void paint(Graphics2D g) {
 		if (pointStart != null) {
 			g.setColor(Color.RED);
-			g.setStroke(new BasicStroke(3));
-			g.drawLine((int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor), (int)((pointEnd.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointEnd.y - imgmngr.yOffset) / imgmngr.zoomFactor));
-			g.setStroke(new BasicStroke(1));
+						
+			int [] xpoints = {(int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointEnd.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointEnd.x - imgmngr.xOffset) / imgmngr.zoomFactor), (int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor)};//,(int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor)};
+			int [] ypoints = {(int)((pointEnd.y - imgmngr.yOffset) / imgmngr.zoomFactor), (int)((pointEnd.y - imgmngr.yOffset) / imgmngr.zoomFactor), (int)((pointStart.y - imgmngr.yOffset) / imgmngr.zoomFactor), (int)((pointStart.y - imgmngr.yOffset) / imgmngr.zoomFactor)};//,(int)((pointEnd.y - imgmngr.xOffset) / imgmngr.zoomFactor)};
+ 			p  = new Square(xpoints, ypoints, 4,imgmngr.getShapeColor());
+			g.drawPolygon(p);
 		}
 	}
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		pointEnd = e.getPoint();
-		
-		pnl.repaint();
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		//pointEnd = e.getPoint();
-	}
-
+	
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 }

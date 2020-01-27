@@ -6,6 +6,8 @@ public class Line{
 	
 	private int p1x, p1y, p2x, p2y;
 	
+	private int thickness = 1;
+	 
 	private Color color;
 	
 	public Line(int p1x, int p1y, int p2x, int p2y, Color color) {
@@ -14,6 +16,14 @@ public class Line{
 		this.p2x = p2x;
 		this.p2y = p2y;
 		this.color = color;
+	}
+	
+	public int getThickness() {
+		return thickness;
+	}
+	
+	public void setThickness(int thickness) {
+		this.thickness = thickness;
 	}
 	
 	public int getP1x() {

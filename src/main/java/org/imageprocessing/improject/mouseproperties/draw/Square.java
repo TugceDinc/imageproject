@@ -4,9 +4,21 @@ import java.awt.Color;
 import java.awt.Polygon;
 
 public class Square extends Polygon{
-	public Color c;
-	public Square(int [] xpoints, int [] ypoints, int npoints, Color c) {
+	
+	private Color color;
+	
+	private int thickness;
+	
+	public Square(int [] xpoints, int [] ypoints, int npoints, Color color) {
 		super(xpoints, ypoints, npoints);
-		this.c = c;
+		this.color = color;
+	}
+	
+	public Color getColor() {
+		return color;
+	}
+
+	public int getThickness() {
+		return thickness;
 	}
 }

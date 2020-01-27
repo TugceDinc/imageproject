@@ -85,7 +85,7 @@ public class ProgramMenuBar extends JMenuBar {
 					g2.drawLine(line.getP1x(), line.getP1y(), line.getP2x(), line.getP2y());
 				}
 				for(Square sqr : imageManager.squareList) {
-					g2.setColor(sqr.c);
+					g2.setColor(sqr.getColor());
 					g2.drawPolygon(sqr);
 					
 				}
