@@ -1,9 +1,10 @@
 package org.imageprocessing.improject.mouseproperties.draw;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Polygon;
 
-public class Square extends Polygon{
+public class Square extends Polygon implements DObject{
 	
 	private Color color;
 	
@@ -21,4 +22,13 @@ public class Square extends Polygon{
 	public int getThickness() {
 		return thickness;
 	}
+
+	@Override
+	public void print(Graphics2D g2d) {
+		g2d.setColor(this.getColor());
+		g2d.drawPolygon(this);
+	
+	
+	}	
+	
 }

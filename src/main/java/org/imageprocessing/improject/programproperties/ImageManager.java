@@ -9,8 +9,10 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.function.ObjDoubleConsumer;
 
 import org.imageprocessing.improject.components.panels.ImagePanel;
+import org.imageprocessing.improject.mouseproperties.draw.DObject;
 import org.imageprocessing.improject.mouseproperties.draw.Line;
 import org.imageprocessing.improject.mouseproperties.draw.Square;
 
@@ -30,13 +32,12 @@ public class ImageManager {
 	private ImagePanel imgpanel;
 	private Color shapeColor = Color.WHITE;
 	
-	public List<Line> lineList;
-	public List<Square> squareList;
+	public List<DObject> dObjectList;
+	
 	public ImageManager() {
 		imgpanel = new ImagePanel();
 		imgpanel.setImageManager(this);
-		lineList = new ArrayList<Line>();
-		squareList = new ArrayList<Square>();
+		dObjectList = new ArrayList<DObject>();
 	}
 
 	public Color getShapeColor() {

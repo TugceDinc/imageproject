@@ -19,6 +19,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import org.imageprocessing.improject.mouseproperties.draw.DObject;
 import org.imageprocessing.improject.mouseproperties.draw.Line;
 import org.imageprocessing.improject.mouseproperties.draw.MouseListeners;
 import org.imageprocessing.improject.mouseproperties.draw.Square;
@@ -80,15 +81,10 @@ public class ProgramMenuBar extends JMenuBar {
 			    BufferedImage bi = imageManager.getImage();//new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 			    Graphics2D g2 = bi.createGraphics();
 				
-				for(Line line : imageManager.lineList) {
-					g2.setColor(line.getColor());
-					g2.drawLine(line.getP1x(), line.getP1y(), line.getP2x(), line.getP2y());
+				for(DObject dObject : imageManager.dObjectList) {
+					dObject.print(g2);
 				}
-				for(Square sqr : imageManager.squareList) {
-					g2.setColor(sqr.getColor());
-					g2.drawPolygon(sqr);
-					
-				}
+
 //			    byte[] pixels = ((DataBufferByte) imageManager.getImage().getRaster().getDataBuffer()).getData();
 //			    
 //			    

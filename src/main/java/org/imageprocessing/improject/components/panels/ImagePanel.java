@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import org.imageprocessing.improject.mouseproperties.ZoomAndDragListener;
+import org.imageprocessing.improject.mouseproperties.draw.DObject;
 import org.imageprocessing.improject.mouseproperties.draw.DrawingLine;
 import org.imageprocessing.improject.mouseproperties.draw.Line;
 import org.imageprocessing.improject.mouseproperties.draw.MouseListeners;
@@ -61,13 +62,8 @@ public class ImagePanel extends JPanel {
 			}
 		}	
 		
-		for(Line line : imgmngr.lineList) {
-			g2.setColor(line.getColor());
-			g2.drawLine(line.getP1x(), line.getP1y(), line.getP2x(), line.getP2y());
-		}
-		for(Square rect : imgmngr.squareList) {
-			g2.setColor(rect.getColor());
-			g2.drawPolygon(rect);
+		for(DObject dObject : imgmngr.dObjectList) {
+			dObject.print(g2);
 		}
 
 	}

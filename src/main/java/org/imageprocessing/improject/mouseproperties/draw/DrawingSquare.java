@@ -42,7 +42,7 @@ public class DrawingSquare implements MouseListeners {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if(pointStart != null && pointEnd != null) {
-			imgmngr.squareList.add(p);
+			imgmngr.dObjectList.add(p);
 		}
 		pointStart = null;
 		pointEnd = null;

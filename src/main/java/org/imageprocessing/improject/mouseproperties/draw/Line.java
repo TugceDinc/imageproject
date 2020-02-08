@@ -1,8 +1,9 @@
 package org.imageprocessing.improject.mouseproperties.draw;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 
-public class Line{
+public class Line implements DObject{
 	
 	private int p1x, p1y, p2x, p2y;
 	
@@ -45,4 +46,10 @@ public class Line{
 	public Color getColor() {
 		return color;
 	}
+
+	@Override
+	public void print(Graphics2D g2d) {
+		g2d.setColor(this.getColor());
+		g2d.drawLine(this.getP1x(), this.getP1y(), this.getP2x(), this.getP2y());
+	}	
 }
