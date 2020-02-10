@@ -93,7 +93,7 @@ public class ImagePanel extends JPanel {
 		//this.setBorder(BorderFactory.createLineBorder(new Color(83, 41, 42), 5));
 		
 		try {
-			image = ImageIO.read(new File("C:\\Users\\Tugce\\Downloads\\helloooooooo.png"));
+			image = ImageIO.read(new File("C:\\Users\\tugce\\Downloads\\hello.jpg"));
 			
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block

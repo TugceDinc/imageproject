@@ -110,8 +110,8 @@ public class MainFrame extends JFrame {
 		pnlCenter.setBorder(new EmptyBorder(4,4,4,4));
 
 		pnlCenterRight = new JPanel(new GridLayout());
-		pnlCenterRight.setPreferredSize(new Dimension(400, 0));
-		pnlCenterRight.setMinimumSize(new Dimension(400, 0));
+		pnlCenterRight.setPreferredSize(new Dimension(300, 0));
+		pnlCenterRight.setMinimumSize(new Dimension(300, 0));
 		pnlCenterRight.setBackground(colors.clrFrond);
 
 		pnlCenterLeft = new JPanel(new BorderLayout(0, 0)) {
@@ -121,8 +121,8 @@ public class MainFrame extends JFrame {
 				g.drawRoundRect(this.getX(), this.getY(), getWidth(), getHeight(), 15, 15);
 			}
 		};
-		pnlCenterLeft.setPreferredSize(new Dimension(400, 0));
-		pnlCenterLeft.setMinimumSize(new Dimension(400, 0));
+		pnlCenterLeft.setPreferredSize(new Dimension(300, 0));
+		pnlCenterLeft.setMinimumSize(new Dimension(300, 0));
 		pnlCenterLeft.setBackground(colors.clrFrond);
 		
 		

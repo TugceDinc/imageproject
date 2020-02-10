@@ -10,14 +10,14 @@ import java.awt.event.MouseWheelEvent;
 import org.imageprocessing.improject.components.panels.ImagePanel;
 import org.imageprocessing.improject.programproperties.ImageManager;
 
-public class DrawingOval implements MouseListeners {
+public class DrawingCenteredCircle implements MouseListeners {
 	
 	Point pointStart = null;
 	Point pointEnd   = null;
 	ImagePanel pnl;
 	ImageManager imgmngr;
-	
-	public DrawingOval(ImageManager imgmnger) {
+
+	public DrawingCenteredCircle(ImageManager imgmnger) {
 		this.imgmngr = imgmnger;
 		this.pnl = imgmnger.getImgpanel();
 	}
@@ -55,15 +55,21 @@ public class DrawingOval implements MouseListeners {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		if(pointStart != null && pointEnd != null) {
-			int distance = (int) pointStart.distance(pointEnd);
+			int spx = (int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor);
+			int spy = (int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor);
+			int epx = (int)((pointEnd.x - imgmngr.xOffset) / imgmngr.zoomFactor);
+			int epy = (int)((pointEnd.y - imgmngr.yOffset) /imgmngr.zoomFactor);
+			
+			
+			int distance = (int)Math.sqrt(Math.pow((spx - epx), 2) + Math.pow((spy - epy), 2));
 			imgmngr
 			.dObjectList
 			.add(
 					new Oval(
-							(int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor), 
-							(int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor),
-							(int)distance,
-							(int)distance,
+							(int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor) - (int)distance, 
+							(int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor) - (int)distance,
+							(int)distance * 2,
+							(int)distance * 2,
 							imgmngr.getShapeColor()));
 		}
 		pointStart = null;
@@ -94,9 +100,15 @@ public class DrawingOval implements MouseListeners {
 		if (pointStart != null) {
 			g.setColor(Color.RED);
 			g.setStroke(new BasicStroke(1));
-			int distance = (int) pointStart.distance(pointEnd);
-			g.drawOval((int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor),  (int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor),(int)distance,(int)distance);	
+			int spx = (int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor);
+			int spy = (int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor);
+			int epx = (int)((pointEnd.x - imgmngr.xOffset) / imgmngr.zoomFactor);
+			int epy = (int)((pointEnd.y - imgmngr.yOffset) /imgmngr.zoomFactor);
 			
+			
+			int distance = (int)Math.sqrt(Math.pow((spx - epx), 2) + Math.pow((spy - epy), 2));
+			g.drawOval((int)((pointStart.x - imgmngr.xOffset) / imgmngr.zoomFactor) - (int)distance, (int)((pointStart.y - imgmngr.yOffset) /imgmngr.zoomFactor) - (int)distance, (int)distance * 2, (int)distance * 2);	
+
 		}
 	}
 
